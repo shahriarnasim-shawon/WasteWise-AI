@@ -1,0 +1,308 @@
+# WasteWiseAI Portion Calibration & Economic Parameters
+# Used for converting detected pixel area to estimated leftover grams,
+# tracking inventory economics, shelf lives, and bin thresholds.
+
+plate_reference:
+  standard_diameter_cm: 26.0
+  area_cm2: 530.93
+  empty_threshold_ratio: 0.06      # <6% food coverage is deemed empty plate
+  partial_threshold_ratio: 0.60    # 6%-60% is partial leftover; >60% is full untouched plate
+
+classes:
+  rice:
+    name_en: "Plain Steamed Rice"
+    name_bn: "সাদা ভাত"
+    grams_per_cm2: 0.85
+    standard_portion_grams: 250
+    unit_cost_bdt: 20.0
+    selling_price_bdt: 35.0
+    floor_price_bdt: 22.0
+    shelf_life_hours: 4.0
+    waste_category: "animal_feed"   # If contaminated/scraped, goes to animal feed or compost
+
+  dal:
+    name_en: "Lentil Soup (Dal)"
+    name_bn: "মসুর ডাল"
+    grams_per_cm2: 0.70
+    standard_portion_grams: 150
+    unit_cost_bdt: 15.0
+    selling_price_bdt: 25.0
+    floor_price_bdt: 16.5
+    shelf_life_hours: 6.0
+    waste_category: "compost"
+
+  bhuna_khichuri:
+    name_en: "Bhuna Khichuri"
+    name_bn: "ভুনা খিচুড়ি"
+    grams_per_cm2: 0.90
+    standard_portion_grams: 300
+    unit_cost_bdt: 40.0
+    selling_price_bdt: 80.0
+    floor_price_bdt: 45.0
+    shelf_life_hours: 4.0
+    waste_category: "animal_feed"
+
+  chicken_curry:
+    name_en: "Chicken Curry"
+    name_bn: "মুরগির মাংস"
+    grams_per_cm2: 0.95
+    standard_portion_grams: 200
+    unit_cost_bdt: 70.0
+    selling_price_bdt: 130.0
+    floor_price_bdt: 75.0
+    shelf_life_hours: 4.0
+    waste_category: "general"       # Cooked poultry bones/scraps to general/biowaste
+
+  fish_curry:
+    name_en: "Fish Curry"
+    name_bn: "মাছের ঝোল"
+    grams_per_cm2: 0.90
+    standard_portion_grams: 180
+    unit_cost_bdt: 60.0
+    selling_price_bdt: 110.0
+    floor_price_bdt: 66.0
+    shelf_life_hours: 4.0
+    waste_category: "general"
+
+  vegetable:
+    name_en: "Mixed Vegetable"
+    name_bn: "সবজি ভাজি"
+    grams_per_cm2: 0.75
+    standard_portion_grams: 150
+    unit_cost_bdt: 18.0
+    selling_price_bdt: 30.0
+    floor_price_bdt: 20.0
+    shelf_life_hours: 5.0
+    waste_category: "compost"
+
+  egg_curry:
+    name_en: "Egg Curry"
+    name_bn: "ডিমের ডালনা"
+    grams_per_cm2: 0.80
+    standard_portion_grams: 130
+    unit_cost_bdt: 22.0
+    selling_price_bdt: 40.0
+    floor_price_bdt: 24.0
+    shelf_life_hours: 5.0
+    waste_category: "animal_feed"
+
+  bhorta:
+    name_en: "Assorted Bhorta"
+    name_bn: "বিভিন্ন ভর্তা"
+    grams_per_cm2: 0.80
+    standard_portion_grams: 80
+    unit_cost_bdt: 12.0
+    selling_price_bdt: 25.0
+    floor_price_bdt: 14.0
+    shelf_life_hours: 4.0
+    waste_category: "compost"
+
+  # PSTU Canteen Dataset Classes
+  daal:
+    name_en: "Lentil Soup (Dal)"
+    name_bn: "মসুর ডাল"
+    grams_per_cm2: 0.70
+    standard_portion_grams: 150
+    unit_cost_bdt: 15.0
+    selling_price_bdt: 25.0
+    floor_price_bdt: 16.5
+    shelf_life_hours: 6.0
+    waste_category: "compost"
+
+  meat:
+    name_en: "Meat Curry (Chicken/Beef)"
+    name_bn: "মাংসের তরকারি"
+    grams_per_cm2: 0.95
+    standard_portion_grams: 180
+    unit_cost_bdt: 70.0
+    selling_price_bdt: 130.0
+    floor_price_bdt: 75.0
+    shelf_life_hours: 4.0
+    waste_category: "general"
+
+  fish:
+    name_en: "Fish Curry / Fry"
+    name_bn: "মাছের তরকারি"
+    grams_per_cm2: 0.90
+    standard_portion_grams: 160
+    unit_cost_bdt: 60.0
+    selling_price_bdt: 110.0
+    floor_price_bdt: 66.0
+    shelf_life_hours: 4.0
+    waste_category: "general"
+
+  egg:
+    name_en: "Boiled / Curried Egg"
+    name_bn: "ডিম"
+    grams_per_cm2: 0.80
+    standard_portion_grams: 100
+    unit_cost_bdt: 20.0
+    selling_price_bdt: 35.0
+    floor_price_bdt: 22.0
+    shelf_life_hours: 5.0
+    waste_category: "animal_feed"
+
+  mashed potato:
+    name_en: "Mashed Potato (Alu Bhorta)"
+    name_bn: "আলু ভর্তা"
+    grams_per_cm2: 0.80
+    standard_portion_grams: 80
+    unit_cost_bdt: 12.0
+    selling_price_bdt: 20.0
+    floor_price_bdt: 14.0
+    shelf_life_hours: 4.0
+    waste_category: "compost"
+
+  salad:
+    name_en: "Cucumber & Onion Salad"
+    name_bn: "সালাদ"
+    grams_per_cm2: 0.50
+    standard_portion_grams: 60
+    unit_cost_bdt: 8.0
+    selling_price_bdt: 15.0
+    floor_price_bdt: 10.0
+    shelf_life_hours: 3.0
+    waste_category: "compost"
+
+  ruti:
+    name_en: "Handmade Roti"
+    name_bn: "হাতে তৈরি রুটি"
+    grams_per_cm2: 0.45
+    standard_portion_grams: 60
+    unit_cost_bdt: 8.0
+    selling_price_bdt: 15.0
+    floor_price_bdt: 9.0
+    shelf_life_hours: 6.0
+    waste_category: "animal_feed"
+
+  Puri:
+    name_en: "Puri / Dalpuri"
+    name_bn: "পুরি / ডালপুরি"
+    grams_per_cm2: 0.55
+    standard_portion_grams: 50
+    unit_cost_bdt: 6.0
+    selling_price_bdt: 12.0
+    floor_price_bdt: 8.0
+    shelf_life_hours: 6.0
+    waste_category: "animal_feed"
+
+  singara:
+    name_en: "Singara"
+    name_bn: "সিঙ্গাড়া"
+    grams_per_cm2: 0.65
+    standard_portion_grams: 60
+    unit_cost_bdt: 8.0
+    selling_price_bdt: 15.0
+    floor_price_bdt: 10.0
+    shelf_life_hours: 6.0
+    waste_category: "animal_feed"
+
+  Chop:
+    name_en: "Alu / Dim Chop"
+    name_bn: "চপ"
+    grams_per_cm2: 0.70
+    standard_portion_grams: 65
+    unit_cost_bdt: 10.0
+    selling_price_bdt: 18.0
+    floor_price_bdt: 12.0
+    shelf_life_hours: 6.0
+    waste_category: "animal_feed"
+
+  chola:
+    name_en: "Cooked Chickpeas (Chola Boot)"
+    name_bn: "ছোলা বুট"
+    grams_per_cm2: 0.80
+    standard_portion_grams: 100
+    unit_cost_bdt: 15.0
+    selling_price_bdt: 25.0
+    floor_price_bdt: 17.0
+    shelf_life_hours: 5.0
+    waste_category: "animal_feed"
+
+  chaa:
+    name_en: "Milk Tea (Chaa)"
+    name_bn: "দুধ চা"
+    grams_per_cm2: 0.60
+    standard_portion_grams: 100
+    unit_cost_bdt: 6.0
+    selling_price_bdt: 10.0
+    floor_price_bdt: 7.0
+    shelf_life_hours: 2.0
+    waste_category: "general"
+
+  matha:
+    name_en: "Matha / Ghol"
+    name_bn: "মাঠা / ঘোল"
+    grams_per_cm2: 0.80
+    standard_portion_grams: 150
+    unit_cost_bdt: 18.0
+    selling_price_bdt: 30.0
+    floor_price_bdt: 20.0
+    shelf_life_hours: 4.0
+    waste_category: "general"
+
+  sweet:
+    name_en: "Traditional Sweet (Roshgolla/Chamcham)"
+    name_bn: "মিষ্টি"
+    grams_per_cm2: 0.85
+    standard_portion_grams: 70
+    unit_cost_bdt: 15.0
+    selling_price_bdt: 25.0
+    floor_price_bdt: 18.0
+    shelf_life_hours: 24.0
+    waste_category: "animal_feed"
+
+  veg roll:
+    name_en: "Vegetable Roll"
+    name_bn: "ভেজিটেবল রোল"
+    grams_per_cm2: 0.65
+    standard_portion_grams: 80
+    unit_cost_bdt: 15.0
+    selling_price_bdt: 25.0
+    floor_price_bdt: 17.0
+    shelf_life_hours: 6.0
+    waste_category: "animal_feed"
+
+plate_states:
+  empty_plate:
+    label_en: "Clean / Empty"
+    label_bn: "খালি প্লেট"
+    max_coverage: 0.06
+    color: "#1e3a2b"
+  partial_leftover:
+    label_en: "Leftover Detected"
+    label_bn: "উচ্ছিষ্ট খাদ্য"
+    max_coverage: 0.60
+    color: "#c25e3e"
+  full_plate:
+    label_en: "Full / Untouched"
+    label_bn: "সম্পূর্ণ প্লেট"
+    max_coverage: 1.00
+    color: "#b91c1c"
+
+waste_bins:
+  edible_surplus:
+    name_en: "Edible Surplus (Donation)"
+    name_bn: "উদ্বৃত্ত খাবার (দান)"
+    capacity_kg: 25.0
+    pickup_threshold_ratio: 0.80
+    destination: "Local Community NGO / Food Bank"
+  animal_feed:
+    name_en: "Animal Feed"
+    name_bn: "পশুর খাদ্য"
+    capacity_kg: 40.0
+    pickup_threshold_ratio: 0.75
+    destination: "Suburban Poultry & Dairy Farm"
+  compost:
+    name_en: "Organic Compost"
+    name_bn: "জৈব সার"
+    capacity_kg: 35.0
+    pickup_threshold_ratio: 0.80
+    destination: "Campus Organic Compost Unit"
+  general:
+    name_en: "General Waste"
+    name_bn: "সাধারণ বর্জ্য"
+    capacity_kg: 50.0
+    pickup_threshold_ratio: 0.85
+    destination: "City Corporation Waste Management"
+
