@@ -1,0 +1,48 @@
+{
+  "food_classes": [
+    "Chop",
+    "Puri",
+    "chaa",
+    "chola",
+    "daal",
+    "egg",
+    "fish",
+    "mashed potato",
+    "matha",
+    "meat",
+    "rice",
+    "ruti",
+    "salad",
+    "singara",
+    "sweet",
+    "veg roll",
+    "vegetable"
+  ],
+  "plate_state_classes": [
+    "empty_plate",
+    "partial_leftover",
+    "full_plate"
+  ],
+  "all_classes": [
+    "Chop",
+    "Puri",
+    "chaa",
+    "chola",
+    "daal",
+    "egg",
+    "fish",
+    "mashed potato",
+    "matha",
+    "meat",
+    "rice",
+    "ruti",
+    "salad",
+    "singara",
+    "sweet",
+    "veg roll",
+    "vegetable",
+    "empty_plate",
+    "partial_leftover",
+    "full_plate"
+  ]
+}
