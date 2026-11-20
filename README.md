@@ -272,4 +272,6 @@ Total Revenue (BDT)              |   3,383,418 BDT |   3,596,276 BDT
 
 ## License
 
-Developed for the **AI Builder Congress Hackathon 2026**. Open source under the MIT License.
+Developed for the **AI Builder Congress Hackathon 2026**.
+
+This project incorporates models and workflows built with Ultralytics YOLOv8 and is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)** in accordance with the [Ultralytics YOLOv8 Licensing Terms](https://github.com/ultralytics/ultralytics/blob/main/LICENSE).
