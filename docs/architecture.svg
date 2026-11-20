@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" width="100%" height="100%" style="background:#fbfbfa; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#71717a" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#1e3a2b" />
+    </marker>
+  </defs>
+
+  <!-- Title Header -->
+  <text x="480" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#18181b">WasteWiseAI — System Architecture Diagram</text>
+  <text x="480" y="58" text-anchor="middle" font-size="12" fill="#71717a">Autonomous Canteen Food Waste Management &amp; Inventory Intelligence Platform</text>
+
+  <!-- Layer 1: Ingestion -->
+  <rect x="40" y="80" width="880" height="95" rx="6" fill="#ffffff" stroke="#e4e4e7" stroke-width="1.5"/>
+  <text x="60" y="102" font-size="11" font-weight="700" fill="#71717a" letter-spacing="1">1. REAL-TIME VISION &amp; INGESTION LAYER</text>
+  
+  <rect x="60" y="115" width="260" height="48" rx="4" fill="#f4f4f2" stroke="#e4e4e7"/>
+  <text x="190" y="136" text-anchor="middle" font-size="12" font-weight="600" fill="#18181b">Canteen Dish Camera</text>
+  <text x="190" y="152" text-anchor="middle" font-size="10" fill="#71717a">Webcam / RTSP Stream</text>
+
+  <rect x="350" y="115" width="260" height="48" rx="4" fill="#f4f4f2" stroke="#e4e4e7"/>
+  <text x="480" y="136" text-anchor="middle" font-size="12" font-weight="600" fill="#18181b">Frame Sampler &amp; Throttler</text>
+  <text x="480" y="152" text-anchor="middle" font-size="10" fill="#71717a">Max 2.5 FPS • 640px Letterbox</text>
+
+  <rect x="640" y="115" width="260" height="48" rx="4" fill="#f4f4f2" stroke="#e4e4e7"/>
+  <text x="770" y="136" text-anchor="middle" font-size="12" font-weight="600" fill="#18181b">Demo Replay Provider</text>
+  <text x="770" y="152" text-anchor="middle" font-size="10" fill="#71717a">5 Calibrated Sample Plates</text>
+
+  <!-- Connectors L1 to L2 -->
+  <path d="M 480 175 L 480 205" stroke="#71717a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Layer 2: Inference & Models -->
+  <rect x="40" y="210" width="880" height="95" rx="6" fill="#ffffff" stroke="#e4e4e7" stroke-width="1.5"/>
+  <text x="60" y="232" font-size="11" font-weight="700" fill="#71717a" letter-spacing="1">2. MODEL REGISTRY &amp; INFERENCE ENGINE</text>
+
+  <rect x="60" y="245" width="260" height="48" rx="4" fill="#f4f4f2" stroke="#e4e4e7" stroke-dasharray="3 3"/>
+  <text x="190" y="266" text-anchor="middle" font-size="12" font-weight="600" fill="#18181b">Kaggle Training Pipeline</text>
+  <text x="190" y="282" text-anchor="middle" font-size="10" fill="#71717a">YOLOv8n • best.onnx + classes.json</text>
+
+  <rect x="350" y="245" width="260" height="48" rx="4" fill="#eaf2ec" stroke="#1e3a2b" stroke-width="2"/>
+  <text x="480" y="266" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a2b">ONNX Runtime (CPU Session)</text>
+  <text x="480" y="282" text-anchor="middle" font-size="10" fill="#1e3a2b">&lt;400ms / Frame • Fallback Mock Mode</text>
+
+  <rect x="640" y="245" width="260" height="48" rx="4" fill="#f4f4f2" stroke="#e4e4e7"/>
+  <text x="770" y="266" text-anchor="middle" font-size="12" font-weight="600" fill="#18181b">Pixel-Coverage Heuristic</text>
+  <text x="770" y="282" text-anchor="middle" font-size="10" fill="#71717a">Plate Mask HSV Segmentation</text>
+
+  <!-- Connectors L2 to L3 -->
+  <path d="M 480 305 L 480 335" stroke="#71717a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Layer 3: Physical Quantification & Event Bus -->
+  <rect x="40" y="340" width="880" height="95" rx="6" fill="#ffffff" stroke="#e4e4e7" stroke-width="1.5"/>
+  <text x="60" y="362" font-size="11" font-weight="700" fill="#71717a" letter-spacing="1">3. PHYSICAL AREA-TO-GRAMS QUANTIFICATION &amp; EVENT BUS</text>
+
+  <rect x="60" y="375" width="400" height="48" rx="4" fill="#f4f4f2" stroke="#e4e4e7"/>
+  <text x="260" y="396" text-anchor="middle" font-size="12" font-weight="600" fill="#18181b">Quantity Estimator</text>
+  <text x="260" y="412" text-anchor="middle" font-size="10" fill="#71717a">26cm Ref Plate • g/cm² calibration table • Financial Valuation (BDT)</text>
+
+  <rect x="500" y="375" width="400" height="48" rx="4" fill="#f4f4f2" stroke="#e4e4e7"/>
+  <text x="700" y="396" text-anchor="middle" font-size="12" font-weight="600" fill="#18181b">Asyncio Event Bus (In-Process / Redis)</text>
+  <text x="700" y="412" text-anchor="middle" font-size="10" fill="#71717a">WasteEvent payload • WebSocket / SSE broadcast • Sub/Pub</text>
+
+  <!-- Connectors L3 to L4 -->
+  <path d="M 480 435 L 480 465" stroke="#71717a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Layer 4: Predictive Agents Suite -->
+  <rect x="40" y="470" width="880" height="120" rx="6" fill="#ffffff" stroke="#e4e4e7" stroke-width="1.5"/>
+  <text x="60" y="492" font-size="11" font-weight="700" fill="#71717a" letter-spacing="1">4. PREDICTIVE AGENTS SUITE &amp; ORCHESTRATOR</text>
+
+  <rect x="60" y="505" width="195" height="50" rx="4" fill="#f4f4f2" stroke="#1e3a2b" stroke-width="1.5"/>
+  <text x="157" y="525" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a2b">DemandForecastAgent</text>
+  <text x="157" y="541" text-anchor="middle" font-size="9" fill="#71717a">Seasonality • Rain • Friday</text>
+
+  <rect x="275" y="505" width="195" height="50" rx="4" fill="#f4f4f2" stroke="#1e3a2b" stroke-width="1.5"/>
+  <text x="372" y="525" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a2b">OrderingAgent</text>
+  <text x="372" y="541" text-anchor="middle" font-size="9" fill="#71717a">Safety Stock • Pot Batching</text>
+
+  <rect x="490" y="505" width="195" height="50" rx="4" fill="#f4f4f2" stroke="#1e3a2b" stroke-width="1.5"/>
+  <text x="587" y="525" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a2b">DynamicDiscountAgent</text>
+  <text x="587" y="541" text-anchor="middle" font-size="9" fill="#71717a">Tiers 10-50% • Floor Guardrail</text>
+
+  <rect x="705" y="505" width="195" height="50" rx="4" fill="#f4f4f2" stroke="#1e3a2b" stroke-width="1.5"/>
+  <text x="802" y="525" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a2b">WasteCollectionAgent</text>
+  <text x="802" y="541" text-anchor="middle" font-size="9" fill="#71717a">4 Bins • Manifests • NGO Food</text>
+
+  <text x="480" y="575" text-anchor="middle" font-size="10" font-weight="600" fill="#18181b">Centralized Orchestrator &amp; Conflict Resolver (Resolves kitchen prep vs surplus markdown conflicts)</text>
+
+  <!-- Connectors L4 to L5 -->
+  <path d="M 480 590 L 480 620" stroke="#71717a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Layer 5: Operational Surfaces & Simulation -->
+  <rect x="40" y="625" width="880" height="100" rx="6" fill="#ffffff" stroke="#e4e4e7" stroke-width="1.5"/>
+  <text x="60" y="647" font-size="11" font-weight="700" fill="#71717a" letter-spacing="1">5. OPERATIONAL CLIENT SURFACES &amp; VERIFIED SIMULATION</text>
+
+  <rect x="60" y="660" width="260" height="50" rx="4" fill="#f4f4f2" stroke="#e4e4e7"/>
+  <text x="190" y="681" text-anchor="middle" font-size="12" font-weight="600" fill="#18181b">React 18 + Vite SPA</text>
+  <text x="190" y="697" text-anchor="middle" font-size="10" fill="#71717a">Live Scan • Analytics • Insights</text>
+
+  <rect x="350" y="660" width="260" height="50" rx="4" fill="#f4f4f2" stroke="#e4e4e7"/>
+  <text x="480" y="681" text-anchor="middle" font-size="12" font-weight="600" fill="#18181b">Today's Offers Board</text>
+  <text x="480" y="697" text-anchor="middle" font-size="10" fill="#71717a">Digital markdown display for students</text>
+
+  <rect x="640" y="660" width="260" height="50" rx="4" fill="#faede9" stroke="#c25e3e" stroke-width="2"/>
+  <text x="770" y="681" text-anchor="middle" font-size="12" font-weight="700" fill="#c25e3e">Simulation Engine (>=30% Proof)</text>
+  <text x="770" y="697" text-anchor="middle" font-size="10" fill="#c25e3e">30-Day Monte Carlo • 53.9% verified</text>
+</svg>
+
