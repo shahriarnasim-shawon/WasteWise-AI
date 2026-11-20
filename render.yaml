@@ -1,0 +1,32 @@
+# Render Blueprint Deployment Configuration for WasteWiseAI
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: wastewise-ai
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    region: singapore # Closest region to Bangladesh
+    healthCheckPath: /healthz
+    numInstances: 1
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: ENV
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: DATABASE_URL
+        value: sqlite:////var/data/wastewise.db
+      - key: MAX_FPS_INFERENCE
+        value: "2.5"
+      - key: STORE_IMAGES_DEFAULT
+        value: "false"
+      - key: IMAGE_RETENTION_HOURS
+        value: "24"
+    disk:
+      name: wastewise-data
+      mountPath: /var/data
+      sizeGB: 1
+
